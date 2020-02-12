@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="posi_btn">
+        <button id="playBtn">播放</button>
+    </div>
+    <audio src="./love.mp3" autoplay loop controls="controls" id="myaudio"></audio>
+</body>
+<script>
+    // var playBtn = document.getElementById('playBtn');
+    // playBtn.onclick = function() {
+    //     var audio = document.getElementById('myaudio');
+    //     audio.play = true;
+    // }
+    var audio = document.getElementById("myaudio");
+    var btn = document.getElementById("playBtn");
+    btn.onclick = function() {
+        audio.volume = 0.5;
+        if (audio.paused) { //判断当前的状态是否为暂停，若是则点击播放，否则暂停
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    }
+</script>
+
+</html>

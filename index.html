@@ -20,6 +20,18 @@
     <script type="text/javascript" src="./77love/jscex-async-powerpack.min.js"></script>
     <script type="text/javascript" src="./77love/functions.js" charset="utf-8"></script>
     <script type="text/javascript" src="./77love/love.js" charset="utf-8"></script>
+    <style>
+        body {
+            position: relative;
+        }
+        
+        .posi_btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+        }
+    </style>
 </head>
 
 
@@ -27,7 +39,10 @@
     <!-- <audio controls="controls" autoplay="autoplay">
         <source src="love.mp3" type="audio/ogg" />
     </audio> -->
-    <audio src="./love.mp3" muted autoplay loop id="myaudio" style="display: none"></audio>
+    <!-- <div class="posi_btn">
+        <button id="playBtn">播放</button>
+    </div> -->
+    <audio src="./love.mp3" autoplay loop id="myaudio" style="display: none"></audio>
     <div id="main">
         <div id="error">本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&amp;brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。</div>
         <div id="wrap">
@@ -125,9 +140,9 @@
             var hold = 1;
 
             canvas.click(function(e) {
-                console.log(6666666)
                 var audio = document.getElementById('myaudio');
                 audio.play = true;
+                run()
                 var offset = canvas.offset(),
                     x, y;
                 x = e.pageX - offset.left;
@@ -266,6 +281,13 @@
         setInterval(function() {
             run(); //假装在轮询服务器，或者从websocket拉取数据
         }, t1);
+
+        // var playBtn = document.getElementById('playBtn');
+        // playBtn.onclick = function() {
+        //     alert("这是第一种点击方式");
+        //     var audio = document.getElementById('myaudio');
+        //     audio.play = true;
+        // }
     </script>
 
 </body>
