@@ -125,6 +125,9 @@
             var hold = 1;
 
             canvas.click(function(e) {
+                console.log(6666666)
+                var audio = document.getElementById('myaudio');
+                audio.play = true;
                 var offset = canvas.offset(),
                     x, y;
                 x = e.pageX - offset.left;

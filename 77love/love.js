@@ -11,10 +11,6 @@
         return p1.add(p2).add(p3);
     }
 
-    function aaa() {
-        // alert('2222222')
-    }
-
     function inheart(x, y, r) {
         // x^2+(y-(x^2)^(1/3))^2 = 1
         // http://www.wolframalpha.com/input/?i=x%5E2%2B%28y-%28x%5E2%29%5E%281%2F3%29%29%5E2+%3D+1
@@ -101,7 +97,6 @@
         draw: function() {
             this.drawHeart();
             this.drawText();
-            aaa()
         },
         addPosition: function(x, y) {
             this.cirle.point = this.cirle.point.add(new Point(x, y));
