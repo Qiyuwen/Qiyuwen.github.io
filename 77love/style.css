@@ -1,0 +1,56 @@
+.footer {
+    width: 100%;
+    height: 55px;
+}
+
+.c_footer {
+    width: 500px;
+    margin: 0 auto;
+    padding: 50px 0;
+    text-align: center;
+    font: normal 14px/24px 'MicroSoft YaHei';
+}
+
+.r_span {
+    /*color: red;*/
+    font-weight: bolder;
+}
+
+
+/*һЩ��Ч*/
+
+.c_footer a:link {
+    color: pink;
+}
+
+.c_footer a:visited {
+    color: red;
+}
+
+.c_footer a:hover {
+    color: seagreen;
+}
+
+.c_footer a:active {
+    color: yellow;
+}
+
+.aaa::after {
+    content: url("../images/60_03.png");
+}
+
+.c_footer h3 {
+    color: #ff5aaa;
+}
+
+.red {
+    color: #FF0000;
+}
+
+.clo33c {
+    color: #33CC00;
+}
+
+.col000 {
+    font-size: 28px;
+}
