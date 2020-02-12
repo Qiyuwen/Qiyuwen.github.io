@@ -27,6 +27,7 @@
     <!-- <audio controls="controls" autoplay="autoplay">
         <source src="love.mp3" type="audio/ogg" />
     </audio> -->
+    <audio src="./love.mp3" muted autoplay loop id="myaudio" style="display: none"></audio>
     <div id="main">
         <div id="error">本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&amp;brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。</div>
         <div id="wrap">
@@ -60,7 +61,7 @@
                 </div>
             </div>
             <div id="clock-box">
-                <span class="col000"></span>
+                <!-- <span class="col000"></span> -->
                 <span class='clo33c'>宝贝，我们在一起</span>
                 <span class="col000">已经</span>
                 <div id="clock"></div>
@@ -229,12 +230,40 @@
             runAsync().start();
         })();
     </script>
-    <div class="t_footer">
+    <!-- <div class="t_footer">
         <div class="c_footer">
 
         </div>
-    </div>
+    </div> -->
+    <script>
+        /*
+         * muted 静音
+         * autoplay 自动播放
+         * loop 循环播放
+         */
+        var audio = document.getElementById('myaudio');
+        var t1 = 3e3; //如果是轮询，这个时间必须大于音频的长度。如果是webscoket，应该设置一个状态play，避免重复播放，如下：
+        // var t2 = 2500; //音频的长度，确保能够完整的播放给用户
+        var play = false;
 
+        function run() {
+            if (play) {
+                return false;
+            }
+            audio.currentTime = 0; //设置播放的音频的起始时间
+            audio.volume = 0.5; //设置音频的声音大小
+            audio.muted = false; //关闭静音状态
+            play = true;
+            // audio.loop = true; //循环播放
+            // setTimeout(function() {
+            //     play = false;
+            //     audio.muted = true; //播放完毕，开启静音状态
+            // }, t2);
+        };
+        setInterval(function() {
+            run(); //假装在轮询服务器，或者从websocket拉取数据
+        }, t1);
+    </script>
 
 </body>
 
