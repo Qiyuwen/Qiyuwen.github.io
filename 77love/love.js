@@ -12,7 +12,7 @@
     }
 
     function aaa() {
-        alert('2222222')
+        // alert('2222222')
     }
 
     function inheart(x, y, r) {
