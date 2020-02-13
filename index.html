@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="copyright" content="77">
-    <title>77loveCjh</title>
+    <title>77LoveCjh</title>
+    <link rel="icon" type="image/x-icon" href="./77love/love.ico" />
     <link type="text/css" rel="stylesheet" href="./77love/default.css">
     <link rel="stylesheet" href="./77love/reset.css">
     <link rel="stylesheet" href="./77love/style.css">
@@ -20,10 +21,32 @@
     <script type="text/javascript" src="./77love/jscex-async-powerpack.min.js"></script>
     <script type="text/javascript" src="./77love/functions.js" charset="utf-8"></script>
     <script type="text/javascript" src="./77love/love.js" charset="utf-8"></script>
+    <style>
+        body {
+            position: relative;
+        }
+        
+        .playBtn {
+            position: absolute;
+            bottom: 21px;
+            right: 52px;
+            z-index: 99999;
+        }
+        
+        .playImg {
+            width: 21px;
+            height: 21px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 
+
 <body>
+    <div class="playBtn" id="playBtn">
+        <img class="playImg" id="playImg" src="./77love/play.png" alt="">
+    </div>
     <audio src="./love.mp3" autoplay loop id="myaudio" style="display: none"></audio>
     <div id="main">
         <div id="error">本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&amp;brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。</div>
@@ -119,9 +142,9 @@
             var hold = 1;
 
             canvas.click(function(e) {
-                var audio = document.getElementById('myaudio');
-                audio.play = true;
-                run()
+                // var audio = document.getElementById('myaudio');
+                // audio.play = true;
+                // run()
                 var offset = canvas.offset(),
                     x, y;
                 x = e.pageX - offset.left;
@@ -232,40 +255,49 @@
         </div>
     </div> -->
     <script>
-        /*
-         * muted 静音
-         * autoplay 自动播放
-         * loop 循环播放
-         */
-        var audio = document.getElementById('myaudio');
-        var t1 = 3e3; //如果是轮询，这个时间必须大于音频的长度。如果是webscoket，应该设置一个状态play，避免重复播放，如下：
-        // var t2 = 2500; //音频的长度，确保能够完整的播放给用户
-        var play = false;
+        // /*
+        //  * muted 静音
+        //  * autoplay 自动播放
+        //  * loop 循环播放
+        //  */
+        // var audio = document.getElementById('myaudio');
+        // var t1 = 3e3; //如果是轮询，这个时间必须大于音频的长度。如果是webscoket，应该设置一个状态play，避免重复播放，如下：
+        // // var t2 = 2500; //音频的长度，确保能够完整的播放给用户
+        // var play = false;
 
-        function run() {
-            if (play) {
-                return false;
+        // function run() {
+        //     if (play) {
+        //         return false;
+        //     }
+        //     audio.currentTime = 0; //设置播放的音频的起始时间
+        //     audio.volume = 0.5; //设置音频的声音大小
+        //     audio.muted = false; //关闭静音状态
+        //     play = true;
+        //     // audio.loop = true; //循环播放
+        //     // setTimeout(function() {
+        //     //     play = false;
+        //     //     audio.muted = true; //播放完毕，开启静音状态
+        //     // }, t2);
+        // };
+        // setInterval(function() {
+        //     run(); //假装在轮询服务器，或者从websocket拉取数据
+        // }, t1);
+
+        var playBtn = document.getElementById('playBtn');
+        // var playImg = document.getElementById('playImg');
+        playBtn.onclick = function() {
+            var audio = document.getElementById('myaudio');
+            audio.volume = 0.5;
+            if (audio.paused) { //判断当前的状态是否为暂停，若是则点击播放，否则暂停
+                audio.play();
+                // playImg.attr("src", "./77love/pause.png");
+                $("#playImg").attr("src", "./77love/pause.png");
+            } else {
+                audio.pause();
+                // playImg.attr("src", "./77love/play.png");
+                $("#playImg").attr("src", "./77love/play.png");
             }
-            audio.currentTime = 0; //设置播放的音频的起始时间
-            audio.volume = 0.5; //设置音频的声音大小
-            audio.muted = false; //关闭静音状态
-            play = true;
-            // audio.loop = true; //循环播放
-            // setTimeout(function() {
-            //     play = false;
-            //     audio.muted = true; //播放完毕，开启静音状态
-            // }, t2);
-        };
-        setInterval(function() {
-            run(); //假装在轮询服务器，或者从websocket拉取数据
-        }, t1);
-
-        // var playBtn = document.getElementById('playBtn');
-        // playBtn.onclick = function() {
-        //     alert("这是第一种点击方式");
-        //     var audio = document.getElementById('myaudio');
-        //     audio.play = true;
-        // }
+        }
     </script>
 
 </body>
